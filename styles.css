@@ -15,16 +15,13 @@ body {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
-    border: 2px solid #ccc; /* Even border around the container */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 300px;
-    box-sizing: border-box; /* Ensures padding and border are included in the width */
 }
 
 h1 {
     font-size: 24px;
     margin-bottom: 20px;
-    text-align: center; /* Centers the title */
 }
 
 label {
@@ -34,21 +31,11 @@ label {
 }
 
 input[type="number"] {
-    width: calc(100% - 30px); /* Adjusts width to account for margins */
+    width: 100%;
     padding: 8px;
     margin-bottom: 20px;
-    margin-left: 15px; /* Adds left margin of 15 pixels */
-    margin-right: 15px; /* Adds right margin of 15 pixels */
-    border: none; /* Removes the border */
-    background: none; /* Removes background */
-    box-shadow: none; /* Removes any box-shadow */
-    border-bottom: 1px solid #ccc; /* Adds a subtle underline */
-    font-size: 16px;
-    color: #333; /* Keeps text visible */
-}
-
-input[type="number"]::placeholder {
-    color: #aaa; /* Styles the placeholder text */
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 button {
@@ -68,5 +55,4 @@ button:hover {
 
 #result {
     margin-top: 20px;
-    text-align: center; /* Centers the results */
 }
