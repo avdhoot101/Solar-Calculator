@@ -1,4 +1,13 @@
 // script.js
+
+// Function to smoothly pop out the calculator when the page loads
+window.addEventListener('load', function() {
+    const calculator = document.getElementById('calculator');
+    setTimeout(() => {
+        calculator.classList.add('visible');
+    }, 100); // Delay to ensure smooth transition
+});
+
 document.getElementById('calculate').addEventListener('click', function() {
     const bill = parseFloat(document.getElementById('bill').value);
     const pricePerKwh = parseFloat(document.getElementById('price').value);
