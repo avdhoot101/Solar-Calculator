@@ -1,4 +1,5 @@
 // script.js
+
 document.getElementById('calculate').addEventListener('click', function() {
     const bill = parseFloat(document.getElementById('bill').value);
     const pricePerKwh = parseFloat(document.getElementById('price').value);
@@ -8,16 +9,16 @@ document.getElementById('calculate').addEventListener('click', function() {
         return;
     }
     
-    // Perform calculations
-    const usagePerMonth = bill / pricePerKwh;
+    // Perform calculations with the updated formula
+    const usagePerMonth = (bill - 434) / pricePerKwh;
     const dailyUsage = usagePerMonth / 30;
     let recommendedCapacity = dailyUsage / 4.5;
     
     // Adjust recommended capacity based on the criteria
     if (recommendedCapacity < 4.5) {
-        recommendedCapacity = 3;
+        recommendedCapacity = 4; // Round down to 4
     } else {
-        recommendedCapacity = 5;
+        recommendedCapacity = 5; // Round up to 5
     }
     
     // Calculate monthly generation and savings
@@ -29,8 +30,7 @@ document.getElementById('calculate').addEventListener('click', function() {
     resultDiv.innerHTML = `
         <h3>Results</h3>
         <p>Usage per Month: ${usagePerMonth.toFixed(2)} Units</p>
-        <p>Daily Usage: ${dailyUsage.toFixed(2)} Units</p>
-        <p>Recommended Capacity: ${recommendedCapacity} kW</p> <!-- Adjusted capacity -->
+        <p>Recommended Capacity: ${recommendedCapacity} kW</p>
         <p>Monthly Power Generation: ${monthlyGeneration.toFixed(2)} Units</p>
         <p>Savings per Month: ${savingsPerMonth}</p>
     `;
