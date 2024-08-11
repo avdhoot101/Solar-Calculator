@@ -15,14 +15,14 @@ document.getElementById('calculate').addEventListener('click', function() {
     
     // Adjust recommended capacity based on the criteria
     if (recommendedCapacity < 4.5) {
-        recommendedCapacity = 3;
+        recommendedCapacity = 4; // Round down to 4
     } else {
-        recommendedCapacity = 5;
+        recommendedCapacity = 5; // Round up to 5
     }
     
     // Calculate monthly generation and savings
     const monthlyGeneration = recommendedCapacity * 4.5 * 30;
-    const savingsPerMonth = (monthlyGeneration * pricePerKwh).toFixed(2);
+    const savingsPerMonth = (monthlyGeneration * pricePerKwh - 434).toFixed(2);
     
     // Display results
     const resultDiv = document.getElementById('result');
