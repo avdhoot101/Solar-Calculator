@@ -7,18 +7,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1 class="title">Solar Calculator</h1>
-        <div class="calculator">
-            <label for="bill">Average Bill:</label>
-            <input type="number" id="bill" placeholder="Enter your average bill">
-            
-            <label for="price">Price per kWh:</label>
-            <input type="number" id="price" placeholder="Enter price per kWh">
-            
-            <button id="calculate">Calculate</button>
-        </div>
-        <div id="result" class="result"></div>
+    <div class="calculator-container">
+        <h1>Solar Calculator</h1>
+        <label for="bill">Average Monthly Bill:</label>
+        <input type="number" id="bill" placeholder="Enter your bill">
+        <label for="price">Price per kWh:</label>
+        <input type="number" id="price" placeholder="Enter price per kWh">
+        <button id="calculate">Calculate</button>
+        <div id="result" style="display: none;"></div>
     </div>
     <script src="script.js"></script>
 </body>
