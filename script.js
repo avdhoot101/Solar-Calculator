@@ -9,7 +9,7 @@ document.getElementById('calculate').addEventListener('click', function() {
     }
     
     // Perform calculations with the updated formula
-    const usagePerMonth = (bill - 434) / pricePerKwh;
+    const usagePerMonth = (bill) / pricePerKwh;
     const dailyUsage = usagePerMonth / 30;
     let recommendedCapacity = dailyUsage / 4.5;
     
