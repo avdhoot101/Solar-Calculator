@@ -1,6 +1,6 @@
 // script.js
 
-// Function to smoothly pop out the calculator when the page loads
+// Function to smoothly scale up the calculator when the page loads
 window.addEventListener('load', function() {
     const calculator = document.getElementById('calculator');
     setTimeout(() => {
