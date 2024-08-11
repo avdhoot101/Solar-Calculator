@@ -1,38 +1,33 @@
 // script.js
 
-document.getElementById('calculate').addEventListener('click', function() {
-    const bill = parseFloat(document.getElementById('bill').value);
-    const pricePerKwh = parseFloat(document.getElementById('price').value);
-    
-    if (isNaN(bill) || isNaN(pricePerKwh)) {
-        alert('Please enter valid numbers for both fields.');
+function calculate() {
+    // Get values from the input fields
+    const billInput = document.getElementById('bill').value;
+    const pricePerKwhInput = document.getElementById('price-per-kwh').value;
+
+    // Convert values to numbers
+    const bill = parseFloat(billInput);
+    const pricePerKwh = parseFloat(pricePerKwhInput);
+
+    // Check if inputs are valid numbers
+    if (isNaN(bill) || isNaN(pricePerKwh) || pricePerKwh <= 0) {
+        alert('Please enter valid numbers.');
         return;
     }
-    
-    // Perform calculations with the updated formula
-    const usagePerMonth = (bill - 434) / pricePerKwh;
-    const dailyUsage = usagePerMonth / 30;
+
+    // Perform calculations
+    const usage = (bill - 434) / pricePerKwh;
+    const dailyUsage = usage / 30;
     let recommendedCapacity = dailyUsage / 4.5;
-    
-    // Adjust recommended capacity based on the criteria
-    if (recommendedCapacity < 4.5) {
-        recommendedCapacity = 4; // Round down to 4
-    } else {
-        recommendedCapacity = 5; // Round up to 5
-    }
-    
-    // Calculate monthly generation and savings
-    const monthlyGeneration = recommendedCapacity * 4.5 * 30;
-    const savingsPerMonth = (monthlyGeneration * pricePerKwh - 434).toFixed(2);
-    
-    // Display results
-    const resultDiv = document.getElementById('result');
-    resultDiv.innerHTML = `
-        <h3>Results</h3>
-        <p>Usage per Month: ${usagePerMonth.toFixed(2)} Units</p>
+    recommendedCapacity = recommendedCapacity < 4.5 ? 4 : 5; // Rounding off
+
+    const monthlyPowerGeneration = recommendedCapacity * 4.5 * 30;
+    const savings = monthlyPowerGeneration * pricePerKwh;
+
+    // Display the result
+    document.getElementById('result').innerHTML = `
         <p>Recommended Capacity: ${recommendedCapacity} kW</p>
-        <p>Monthly Power Generation: ${monthlyGeneration.toFixed(2)} Units</p>
-        <p>Savings per Month: ${savingsPerMonth}</p>
+        <p>Monthly Power Generation: ${monthlyPowerGeneration.toFixed(2)} kWh</p>
+        <p>Savings per Month: ${savings.toFixed(2)}</p>
     `;
-    resultDiv.style.display = 'block';
-});
+}
