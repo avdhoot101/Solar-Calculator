@@ -9,7 +9,7 @@ document.getElementById('calculate').addEventListener('click', function() {
     }
     
     // Perform calculations with the updated formula
-    const usagePerMonth = (bill) / pricePerKwh;
+    const usagePerMonth = (bill - 434) / pricePerKwh;
     const dailyUsage = usagePerMonth / 30;
     let recommendedCapacity = dailyUsage / 4.5;
     
@@ -22,7 +22,7 @@ document.getElementById('calculate').addEventListener('click', function() {
     
     // Calculate monthly generation and savings
     const monthlyGeneration = recommendedCapacity * 4.5 * 30;
-    const savingsPerMonth = (monthlyGeneration * pricePerKwh - 434).toFixed(2);
+    const savingsPerMonth = (monthlyGeneration * pricePerKwh).toFixed(2);
     
     // Display results
     const resultDiv = document.getElementById('result');
