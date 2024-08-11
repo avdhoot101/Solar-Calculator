@@ -37,9 +37,16 @@ input[type="number"] {
     width: 100%;
     padding: 8px;
     margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Ensures padding is included in the input width */
+    border: none; /* Removes the border */
+    background: none; /* Removes background */
+    box-shadow: none; /* Removes any box-shadow */
+    border-bottom: 1px solid #ccc; /* Optional: Adds a subtle underline */
+    font-size: 16px;
+    color: #333; /* Keeps text visible */
+}
+
+input[type="number"]::placeholder {
+    color: #aaa; /* Styles the placeholder text */
 }
 
 button {
