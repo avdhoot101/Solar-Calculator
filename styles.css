@@ -3,12 +3,12 @@
 /* Initial state of the calculator (hidden and scaled down) */
 .calculator-container {
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(0.5); /* Start smaller */
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-/* Final state after the pop-out animation (visible and scaled to normal size) */
+/* Final state after the scale-up animation (visible and scaled to normal size) */
 .calculator-container.visible {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1); /* End at full size */
 }
