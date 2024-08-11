@@ -34,13 +34,15 @@ label {
 }
 
 input[type="number"] {
-    width: 100%;
+    width: calc(100% - 30px); /* Adjusts width to account for margins */
     padding: 8px;
     margin-bottom: 20px;
+    margin-left: 15px; /* Adds left margin of 15 pixels */
+    margin-right: 15px; /* Adds right margin of 15 pixels */
     border: none; /* Removes the border */
     background: none; /* Removes background */
     box-shadow: none; /* Removes any box-shadow */
-    border-bottom: 1px solid #ccc; /* Optional: Adds a subtle underline */
+    border-bottom: 1px solid #ccc; /* Adds a subtle underline */
     font-size: 16px;
     color: #333; /* Keeps text visible */
 }
