@@ -1,58 +1,38 @@
-/* styles.css */
+// script.js
 
-/* Basic styling */
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f4f4f4;
-}
-
-.calculator-container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 300px;
-}
-
-h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-
-input[type="number"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #240E8B;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #3e27b1;
-}
-
-#result {
-    margin-top: 20px;
-}
+document.getElementById('calculate').addEventListener('click', function() {
+    const bill = parseFloat(document.getElementById('bill').value);
+    const pricePerKwh = parseFloat(document.getElementById('price').value);
+    
+    if (isNaN(bill) || isNaN(pricePerKwh)) {
+        alert('Please enter valid numbers for both fields.');
+        return;
+    }
+    
+    // Perform calculations with the updated formula
+    const usagePerMonth = (bill - 434) / pricePerKwh;
+    const dailyUsage = usagePerMonth / 30;
+    let recommendedCapacity = dailyUsage / 4.5;
+    
+    // Adjust recommended capacity based on the criteria
+    if (recommendedCapacity < 4.5) {
+        recommendedCapacity = 4; // Round down to 4
+    } else {
+        recommendedCapacity = 5; // Round up to 5
+    }
+    
+    // Calculate monthly generation and savings
+    const monthlyGeneration = recommendedCapacity * 4.5 * 30;
+    const savingsPerMonth = (monthlyGeneration * pricePerKwh - 434).toFixed(2);
+    
+    // Display results
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = `
+        <h3>Results</h3>
+        <p>Usage per Month: ${usagePerMonth.toFixed(2)} Units</p>
+        <p>Recommended Capacity: ${recommendedCapacity} kW</p>
+        <p>Monthly Power Generation: ${monthlyGeneration.toFixed(2)} Units</p>
+        <p>Savings per Month: ${savingsPerMonth}</p>
+    `;
+    resultDiv.style.display = 'block';
+});
